@@ -13,6 +13,5 @@ public class SpellmongerAppTest {
         Assert.assertEquals(0, app.playersCreature.get("Alice"), 0);
         app.drawACard("Alice", "Bob", 1);
         Assert.assertEquals(1, app.playersCreature.get("Alice"), 1);
-
     }
 }
