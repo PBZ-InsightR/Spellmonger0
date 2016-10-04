@@ -7,7 +7,7 @@ class Player {
     Player() {
         this.lifePoints = 20;
         this.nbCreatures = 0;
-    }
+    } 
 
     boolean isAlive() {
         return lifePoints >= 0;
