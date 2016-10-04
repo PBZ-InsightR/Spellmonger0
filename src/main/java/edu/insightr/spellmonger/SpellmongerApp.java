@@ -8,18 +8,22 @@ import java.util.List;
 public class SpellmongerApp {
     private static final Logger logger = Logger.getLogger(SpellmongerApp.class);
 
-    Player alice = new Player("Alice");
-    Player bob = new Player("Bob");
-    private List<String> deck = new ArrayList<>(70);
+    private static final String RITUAL = "Ritual";
+    private static final String CREATURE = "Creature";
+
+    Player alice = new Player();
+    Player bob = new Player();
+
+    private List<Card> deck = new ArrayList<>(70);
 
     SpellmongerApp() {
         int ritualMod = 3;
         for (int i = 0; i < 70; i++) {
             if (i % ritualMod == 0) {
-                deck.add("Ritual");
+                deck.add(new Card(RITUAL));
             }
             if (i % ritualMod != 0) {
-                deck.add("Creature");
+                deck.add(new Card(CREATURE));
             }
             if (ritualMod == 3) {
                 ritualMod = 2;
@@ -56,7 +60,7 @@ public class SpellmongerApp {
                 onePlayerDead = true;
             }
 
-            if ("Alice".equalsIgnoreCase(currentPlayer.getName())) {
+            if (app.alice == currentPlayer) {
                 currentPlayer = app.bob;
                 opponent = app.alice;
             } else {
@@ -77,7 +81,7 @@ public class SpellmongerApp {
 
     void drawACard(Player currentPlayer, Player opponent, int currentCardNumber) {
 
-        if ("Creature".equalsIgnoreCase(deck.get(currentCardNumber))) {
+        if (CREATURE.equalsIgnoreCase(deck.get(currentCardNumber).getName())) {
             logger.info(currentPlayer + " draw a Creature");
             currentPlayer.addCreatures(1);
             int nbCreatures = currentPlayer.getCreatures();
@@ -86,7 +90,8 @@ public class SpellmongerApp {
                 logger.info("The " + nbCreatures + " creatures of " + currentPlayer + " attack and deal " + nbCreatures + " damages to its opponent");
             }
         }
-        if ("Ritual".equalsIgnoreCase(deck.get(currentCardNumber))) {
+
+        if (RITUAL.equalsIgnoreCase(deck.get(currentCardNumber).getName())) {
             logger.info(currentPlayer + " draw a Ritual");
             int nbCreatures = currentPlayer.getCreatures();
             if (nbCreatures > 0) {

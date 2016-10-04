@@ -1,12 +1,10 @@
 package edu.insightr.spellmonger;
 
 class Player {
-    private String name;
     private int lifePoints;
     private int nbCreatures;
 
-    Player(String name) {
-        this.name = name;
+    Player() {
         this.lifePoints = 20;
         this.nbCreatures = 0;
     }
@@ -21,10 +19,6 @@ class Player {
 
     void setLifePoints(int lifePoints) {
         this.lifePoints = lifePoints;
-    }
-
-    String getName() {
-        return name;
     }
 
     void addCreatures(int nbCreatures) {

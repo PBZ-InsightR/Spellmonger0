@@ -7,7 +7,7 @@ public class PlayerTest {
 
     @Test
     public void addCreature() throws Exception {
-        Player player = new Player("testing player");
+        Player player = new Player();
         Assert.assertEquals(0, player.getCreatures(), 0);
         player.addCreatures(2);
         Assert.assertEquals(2, player.getCreatures(), 0);
