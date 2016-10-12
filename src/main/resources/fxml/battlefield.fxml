@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<SplitPane id="rootPane" dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" orientation="VERTICAL"
+           xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+    <items>
+        <SplitPane id="opponentSplitPane"/>
+        <SplitPane id="playerSplitPane">
+            <items>
+                <SplitPane dividerPositions="0.5">
+                    <items>
+                        <AnchorPane>
+                            <children>
+                                <VBox>
+                                    <children>
+                                        <Pane VBox.vgrow="ALWAYS">
+                                            <TextField id="playerName" disable="true"/>
+                                        </Pane>
+                                        <Pane VBox.vgrow="ALWAYS">
+                                            <TextField id="playerLifePoint" disable="true" VBox.vgrow="ALWAYS"/>
+                                        </Pane>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane>
+                            <children>
+                                <SplitPane dividerPositions="0.5" orientation="VERTICAL">
+                                    <items>
+                                        <ScrollPane>
+                                            <content>
+                                                <HBox>
+                                                    <children>
+                                                        <Pane/>
+                                                        <Pane/>
+                                                        <Pane/>
+                                                    </children>
+                                                </HBox>
+                                            </content>
+                                        </ScrollPane>
+                                        <HBox>
+                                            <children>
+                                                <Pane HBox.hgrow="ALWAYS">
+                                                    <TextField id="currentCard"/>
+                                                </Pane>
+                                                <Pane id="playPane" HBox.hgrow="NEVER">
+                                                    <Button id="play" text="Play"/>
+                                                </Pane>
+                                                <Pane HBox.hgrow="ALWAYS">
+                                                    <TextArea id="discard"/>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                    </items>
+                </SplitPane>
+            </items>
+        </SplitPane>
+    </items>
+</SplitPane>

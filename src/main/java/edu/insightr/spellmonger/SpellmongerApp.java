@@ -1,11 +1,16 @@
 package edu.insightr.spellmonger;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpellmongerApp {
+public class SpellmongerApp extends Application {
     private static final Logger logger = Logger.getLogger(SpellmongerApp.class);
 
     private static final String RITUAL = "Ritual";
@@ -16,7 +21,7 @@ public class SpellmongerApp {
 
     private List<Card> deck = new ArrayList<>(70);
 
-    SpellmongerApp() {
+    public SpellmongerApp() {
         int ritualMod = 3;
         for (int i = 0; i < 70; i++) {
             if (i % ritualMod == 0) {
@@ -35,10 +40,14 @@ public class SpellmongerApp {
 
     public static void main(String[] args) {
         SpellmongerApp app = new SpellmongerApp();
+        app.launchGame();
+        launch(args);
+    }
 
+    public void launchGame() {
         boolean onePlayerDead = false;
-        Player currentPlayer = app.alice;
-        Player opponent = app.bob;
+        Player currentPlayer = this.alice;
+        Player opponent = this.bob;
         int currentCardNumber = 0;
         int roundCounter = 1;
         Player winner = null;
@@ -47,7 +56,8 @@ public class SpellmongerApp {
             logger.info("\n");
             logger.info("***** ROUND " + roundCounter);
 
-            app.drawACard(currentPlayer, opponent, currentCardNumber);
+            currentPlayer.addEnergy(1);
+            this.drawACard(currentPlayer, opponent, currentCardNumber);
 
             logger.info(opponent + " has " + opponent.getLifePoints() + " life points and " + currentPlayer + " has " + currentPlayer.getLifePoints() + " life points ");
 
@@ -60,12 +70,12 @@ public class SpellmongerApp {
                 onePlayerDead = true;
             }
 
-            if (app.alice == currentPlayer) {
-                currentPlayer = app.bob;
-                opponent = app.alice;
+            if (this.alice == currentPlayer) {
+                currentPlayer = this.bob;
+                opponent = this.alice;
             } else {
-                currentPlayer = app.alice;
-                opponent = app.bob;
+                currentPlayer = this.alice;
+                opponent = this.bob;
             }
             currentCardNumber++;
             roundCounter++;
@@ -106,4 +116,22 @@ public class SpellmongerApp {
         player.setLifePoints(player.getLifePoints() - damageAmount);
     }
 
+    @Override
+    public void start(Stage stage) throws Exception {
+        logger.info("Starting Hello JavaFX and Maven demonstration application");
+
+//        String fxmlFile = "/fxml/spellmonger.fxml";
+        String fxmlFile = "/fxml/battlefield.fxml";
+        logger.debug("Loading FXML for main view from: {}" + fxmlFile);
+        FXMLLoader loader = new FXMLLoader();
+        Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
+
+        logger.debug("Showing JFX scene");
+        Scene scene = new Scene(rootNode, 400, 200);
+        scene.getStylesheets().add("/styles/styles.css");
+
+        stage.setTitle("Hello JavaFX and Maven");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

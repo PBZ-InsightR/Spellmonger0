@@ -1,0 +1,5 @@
+#playPane {
+    -fx-border-color: red;
+    -fx-alignment: baseline-center;
+    -fx-padding: 100px, 100px, 100px, 100px;
+}

@@ -25,5 +25,4 @@ public class StepDefinitions {
         assertThat(player.getCreatures(), is(equalTo(creatureCount)));
     }
 
-
 }
