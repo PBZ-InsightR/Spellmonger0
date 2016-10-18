@@ -15,7 +15,7 @@ public class StepDefinitions {
 
     @Given("^\"([^\"]*)\" joins the game$")
     public void joinsTheGame(String playerName) throws Throwable {
-        players.put(playerName, new Player());
+        players.put(playerName, new Player("Alice"));
     }
 
     @Then("^player \"([^\"]*)\" has (\\d+) life points and (\\d+) creature$")

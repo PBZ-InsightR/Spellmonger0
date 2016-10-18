@@ -50,18 +50,6 @@
             <version>${cucumber-junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- MigLayout -->
-        <dependency>
-            <groupId>com.miglayout</groupId>
-            <artifactId>miglayout-javafx</artifactId>
-            <version>4.2</version>
-        </dependency>
-        <!-- Apache Commons -->
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
-        </dependency>
         <!--<dependency>-->
         <!--<groupId>info.cukes</groupId>-->
         <!--<artifactId>cucumber-guice</artifactId>-->

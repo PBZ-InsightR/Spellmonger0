@@ -1,14 +1,16 @@
 package edu.insightr.spellmonger;
 
 class Player {
+    String name;
     private int lifePoints;
     private int nbCreatures;
     private int energyVault;
 
-    Player() {
+    Player(String name) {
         this.lifePoints = 20;
         this.nbCreatures = 0;
         this.energyVault = 0;
+        this.name = name;
     } 
 
     boolean isAlive() {
