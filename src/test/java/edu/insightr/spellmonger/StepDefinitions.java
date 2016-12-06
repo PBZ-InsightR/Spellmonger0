@@ -1,5 +1,6 @@
 package edu.insightr.spellmonger;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
@@ -15,7 +16,7 @@ public class StepDefinitions {
 
     @Given("^\"([^\"]*)\" joins the game$")
     public void joinsTheGame(String playerName) throws Throwable {
-        players.put(playerName, new Player("Alice"));
+        players.put(playerName, new Player(playerName));
     }
 
     @Then("^player \"([^\"]*)\" has (\\d+) life points and (\\d+) creature$")
